@@ -20,8 +20,8 @@ const models: TsoaRoute.Models = {
         "dataType": "refObject",
         "properties": {
             "id": {"dataType":"double"},
-            "first_name": {"dataType":"string","required":true},
-            "last_name": {"dataType":"string","required":true},
+            "firstName": {"dataType":"string","required":true},
+            "lastName": {"dataType":"string","required":true},
         },
         "additionalProperties": false,
     },
@@ -31,7 +31,7 @@ const models: TsoaRoute.Models = {
         "properties": {
             "id": {"dataType":"double"},
             "title": {"dataType":"string","required":true},
-            "publish_year": {"dataType":"double","required":true},
+            "publishYear": {"dataType":"double","required":true},
             "author": {"ref":"AuthorDTO"},
             "isbn": {"dataType":"string","required":true},
         },

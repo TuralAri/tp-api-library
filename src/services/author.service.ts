@@ -16,7 +16,7 @@ export class AuthorService {
     firstName: string,
     lastName: string
   ): Promise<Author> {
-    return Author.create({id: -1, firstName: firstName, lastName: lastName });
+    return Author.create({firstName: firstName, lastName: lastName });
   }
 
   // Supprime un auteur par ID

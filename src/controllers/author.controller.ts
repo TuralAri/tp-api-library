@@ -12,11 +12,18 @@ export class AuthorController extends Controller {
     return authorService.getAllAuthors();
   }
 
-  // Récupère un auteur par ID
-  @Get("{id}")
-  public async getAuthorById(@Path() id: number): Promise<AuthorDTO | null> {
-    return authorService.getAuthorById(id);
-  }
+// Récupère un auteur par ID
+    @Get("{id}")
+    public async getAuthorById(@Path() id: number): Promise<AuthorDTO | null>{
+        const author = await authorService.getAuthorById(id);
+
+        if (!author) {
+            this.setStatus(404);
+            throw new Error(`Auteur avec l'id ${id} introuvable`);
+        }
+
+        return author;
+    }
 
   // Crée un nouvel auteur
   @Post("/")
