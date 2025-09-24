@@ -156,12 +156,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/components/schemas/AuthorDTO"
-										}
-									],
-									"nullable": true
+									"$ref": "#/components/schemas/AuthorDTO"
 								}
 							}
 						}
@@ -214,12 +209,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/components/schemas/AuthorDTO"
-										}
-									],
-									"nullable": true
+									"$ref": "#/components/schemas/AuthorDTO"
 								}
 							}
 						}
