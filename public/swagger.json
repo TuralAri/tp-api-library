@@ -90,11 +90,41 @@
 				],
 				"security": [],
 				"parameters": []
+			},
+			"post": {
+				"operationId": "CreateBook",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/BookDTO"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Books"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/BookDTO"
+							}
+						}
+					}
+				}
 			}
 		},
 		"/books/{id}": {
 			"get": {
-				"operationId": "GetBoodById",
+				"operationId": "GetBookById",
 				"responses": {
 					"200": {
 						"description": "Ok",

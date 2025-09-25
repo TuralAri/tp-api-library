@@ -3,7 +3,7 @@ import sequelize from "../config/database"; // Connection à la base de données
 import { Author } from "./author.model";
 
 export interface BookAttributes {
-  id: number;
+  id?: number;
   title: string;
   publishYear: number;
   authorId: number;
