@@ -152,46 +152,6 @@
 						}
 					}
 				]
-			},
-			"patch": {
-				"operationId": "UpdateBook",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/BookDTO"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Books"
-				],
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "id",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/BookDTO"
-							}
-						}
-					}
-				}
 			}
 		},
 		"/authors": {
