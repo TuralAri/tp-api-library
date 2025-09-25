@@ -1,4 +1,4 @@
-import {Controller,Body,Patch, Get, Post, Route, Tags} from "tsoa";
+import {Controller, Body, Patch, Get, Post, Route, Tags, Path} from "tsoa";
 import { BookDTO } from "../dto/book.dto";
 import { bookService } from "../services/book.service";
 import { CustomError } from "../middlewares/errorHandler";
@@ -37,5 +37,18 @@ export class BookController extends Controller {
         }
 
         return bookService.createBook(title, publishYear, author?.id, isbn)
+    }
+
+    @Patch("{id}")
+    public async updateBook(@Path() id: number, @Body() requestBody: BookDTO): Promise<Book | null> {
+        let { title, publishYear, author, isbn } = requestBody;
+
+        if(author?.id === undefined) {
+            let error: CustomError = new Error("Author ID is required to update a book");
+            error.status = 400;
+            throw error;
+        }
+
+        return bookService.updateBook(id, title, publishYear, author?.id, isbn);
     }
 }
