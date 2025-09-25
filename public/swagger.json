@@ -414,7 +414,7 @@
 		},
 		"/books/{id}/bookCopys": {
 			"get": {
-				"operationId": "GetBookBookCopysById",
+				"operationId": "GetBookCopysById",
 				"responses": {
 					"200": {
 						"description": "Ok",

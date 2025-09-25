@@ -64,7 +64,7 @@ export class BookController extends Controller {
 
     // Récupère les copies d'un livre par ID
     @Get("/{id}/bookCopys")
-    public async getBookBookCopysById(@Path() id: number): Promise<BookCopyDTO[] | null> {
+    public async getBookCopysById(@Path() id: number): Promise<BookCopyDTO[] | null> {
         const book: Book | null = await bookService.getBookById(id);
         if (!book) {
             let error: CustomError = new Error("Book not found");
