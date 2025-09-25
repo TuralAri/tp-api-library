@@ -18,12 +18,13 @@ export function expressAuthentication(
             } else {
 
                 jwt.verify(token, "your_secret_key",
-                    function (erreur, decoded) {
-                        if (scopes !== undefined) {
+                    function(erreur, decoded) {
+                        if(scopes !== undefined) {
                             // Gestion des droits
                         }
                         resolve(decoded);
                     }
+
                 );
             }
         });
