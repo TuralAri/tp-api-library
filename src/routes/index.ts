@@ -9,8 +9,13 @@ import { BookCopyController } from './../controllers/bookCopy.controller';
 import { BookController } from './../controllers/book.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { AuthorController } from './../controllers/author.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { AuthenticationController } from './../controllers/authentication.controller';
+import { expressAuthentication } from './../middlewares/authentication';
+// @ts-ignore - no great way to install types from subpackage
 import type { Request as ExRequest, Response as ExResponse, RequestHandler, Router } from 'express';
 
+const expressAuthenticationRecasted = expressAuthentication as (req: ExRequest, securityName: string, scopes?: string[], res?: ExResponse) => Promise<any>;
 
 
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -46,6 +51,16 @@ const models: TsoaRoute.Models = {
             "available": {"dataType":"double","required":true},
             "state": {"dataType":"double","required":true},
             "book": {"ref":"BookDTO"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "AuthenticationDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "grant_type": {"dataType":"string","required":true},
+            "username": {"dataType":"string","required":true},
+            "password": {"dataType":"string","required":true},
         },
         "additionalProperties": false,
     },
@@ -566,6 +581,36 @@ export function RegisterRoutes(app: Router) {
 
               await templateService.apiHandler({
                 methodName: 'getAuthorBooksById',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsAuthenticationController_authenticate: Record<string, TsoaRoute.ParameterSchema> = {
+                requestBody: {"in":"body","name":"requestBody","required":true,"ref":"AuthenticationDTO"},
+        };
+        app.post('/auth',
+            ...(fetchMiddlewares<RequestHandler>(AuthenticationController)),
+            ...(fetchMiddlewares<RequestHandler>(AuthenticationController.prototype.authenticate)),
+
+            async function AuthenticationController_authenticate(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsAuthenticationController_authenticate, request, response });
+
+                const controller = new AuthenticationController();
+
+              await templateService.apiHandler({
+                methodName: 'authenticate',
                 controller,
                 response,
                 next,
