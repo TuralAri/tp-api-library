@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Patch, Path, Post, Route, Tags} from "tsoa";
+import {Body, Controller, Delete, Get, Patch, Path, Post, Route, Security, Tags} from "tsoa";
 import {BookCopyDTO} from "../dto/bookCopy.dto";
 import {bookCopyService} from "../services/bookCopy.service";
 import {CustomError} from "../middlewares/errorHandler";
@@ -6,6 +6,7 @@ import {BookCopy} from "../models/bookCopy.model";
 
 @Route("book-copies")
 @Tags("Book-copies")
+@Security("jwt")
 export class BookCopyController extends Controller {
     @Get("/")
     public async getAllBookCopys(): Promise<BookCopyDTO[]> {

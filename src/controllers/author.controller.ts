@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Delete, Route, Path, Body, Tags, Patch } from "tsoa";
+import { Controller, Get, Post, Delete, Route, Path, Body, Tags, Patch, Security } from "tsoa";
 import { authorService } from "../services/author.service";
 import { AuthorDTO } from "../dto/author.dto";
 import { Author } from "../models/author.model";
@@ -8,6 +8,7 @@ import {BookDTO} from "../dto/book.dto";
 
 @Route("authors")
 @Tags("Authors")
+@Security("jwt")
 export class AuthorController extends Controller {
   // Récupère tous les auteurs
   @Get("/")
