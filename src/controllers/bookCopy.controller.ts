@@ -8,12 +8,14 @@ import {BookCopy} from "../models/bookCopy.model";
 @Tags("Book-copies")
 @Security("jwt")
 export class BookCopyController extends Controller {
+    @Security("jwt", ["read"])
     @Get("/")
     public async getAllBookCopys(): Promise<BookCopyDTO[]> {
         return bookCopyService.getAllBookCopys();
     }
 
     // Récupère une copie de livre par ID
+    @Security("jwt", ["read"])
     @Get("/{id}")
     public async getBookCopyById(@Path() id: number): Promise<BookCopyDTO | null> {
         const bookCopy: BookCopy | null = await bookCopyService.getBookCopyById(id);
@@ -26,6 +28,7 @@ export class BookCopyController extends Controller {
     }
 
     // Crée une nouvelle copie de livre
+    @Security("jwt", ["write"])
     @Post("/")
     public async createBookCopy(
         @Body() requestBody: BookCopyDTO
@@ -39,6 +42,7 @@ export class BookCopyController extends Controller {
     }
 
     // Met à jour une copie de livre par ID
+    @Security("jwt", ["update"])
     @Patch("{id}")
     public async updateBookCopy(
         @Path() id: number,
@@ -56,6 +60,7 @@ export class BookCopyController extends Controller {
 
     // Supprime une copie de livre par ID
     @Delete("{id}")
+    @Security("jwt", ["delete"])
     public async deleteBookCopy(@Path() id: number): Promise<void> {
         await bookCopyService.deleteBookCopy(id);
     }
