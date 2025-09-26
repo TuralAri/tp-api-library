@@ -16,7 +16,7 @@ export class AuthenticationController extends Controller {
             throw error;
         }
 
-        const token = await authenticationService.authenticate(username, password);
+        const token = await authenticationService.authenticate(requestBody.username, requestBody.password);
 
         return { token };
     }

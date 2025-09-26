@@ -1,6 +1,7 @@
 import { CustomError } from "../middlewares/errorHandler";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model";
+import { generateToken } from "../middlewares/authentication";
 
 export class AuthenticationService {
     public async authenticate(username: string, password: string): Promise<string> {
@@ -12,11 +13,7 @@ export class AuthenticationService {
             throw error;
         }
 
-        const token = jwt.sign(
-            {username: user.username},
-            "your_secret_key",
-            { expiresIn: '1h' });
-        return token;
+        return generateToken(username);
     }
 }
 

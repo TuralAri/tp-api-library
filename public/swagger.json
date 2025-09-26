@@ -541,7 +541,9 @@
 				],
 				"security": [
 					{
-						"jwt": []
+						"jwt": [
+							"read"
+						]
 					}
 				],
 				"parameters": []
@@ -565,7 +567,9 @@
 				],
 				"security": [
 					{
-						"jwt": []
+						"jwt": [
+							"write"
+						]
 					}
 				],
 				"parameters": [],
@@ -601,7 +605,9 @@
 				],
 				"security": [
 					{
-						"jwt": []
+						"jwt": [
+							"read"
+						]
 					}
 				],
 				"parameters": [
@@ -628,7 +634,9 @@
 				],
 				"security": [
 					{
-						"jwt": []
+						"jwt": [
+							"delete"
+						]
 					}
 				],
 				"parameters": [
@@ -662,7 +670,9 @@
 				],
 				"security": [
 					{
-						"jwt": []
+						"jwt": [
+							"update"
+						]
 					}
 				],
 				"parameters": [
@@ -712,7 +722,9 @@
 				],
 				"security": [
 					{
-						"jwt": []
+						"jwt": [
+							"read"
+						]
 					}
 				],
 				"parameters": [
